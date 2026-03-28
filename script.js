@@ -17,7 +17,7 @@ const results = {
     sanguine: { title: "Сангвиник", desc: "<b>В обществе:</b> Вы — душа компании. Легко адаптируетесь и умеете разрядить обстановку юмором.", fact: "Сангвиники быстрее всех адаптируются к новым условиям." },
     choleric: { title: "Холерик", desc: "<b>В обществе:</b> Вы — решительный лидер. Ваша энергия заставляет всё вокруг двигаться.", fact: "У холериков самая быстрая реакция среди всех типов." },
     phlegmatic: { title: "Флегматик", desc: "<b>В обществе:</b> Вы — островок спокойствия. Надежны и не склонны к интригам.", fact: "Флегматики — самые стрессоустойчивые сотрудники." },
-    melancholic: { title: "Меланхолик", desc: "<b>В обществе:</b> Вы — эмпат. Тонко чувствуете людей и обладаете глубоким внутренним миром.", fact: "Меланхолики чаще других становятся выдающимися творцами." }
+    melancholic: { title: "Меланхолик", desc: "<b>В обществе:</b> Вы — эмпат. Тонко чувствуете людей и обладаете глубоким внутренним миром.", fact: "Меланхолики чаще других становятся творцами." }
 };
 
 let currentIdx = 0;
@@ -32,12 +32,9 @@ function handleAnswer(val) {
 }
 
 function updateUI() {
-    const qText = document.getElementById('question-text');
-    const progress = document.getElementById('progress');
-
     if (currentIdx < questions.length) {
-        qText.innerText = questions[currentIdx].q;
-        progress.style.width = (currentIdx / questions.length * 100) + "%";
+        document.getElementById('question-text').innerText = questions[currentIdx].q;
+        document.getElementById('progress').style.width = (currentIdx / questions.length * 100) + "%";
     } else {
         document.getElementById('quiz-card').classList.add('hidden');
         document.getElementById('result-card').classList.remove('hidden');
@@ -49,6 +46,4 @@ function updateUI() {
         `;
     }
 }
-
-// Запуск первой отрисовки
 updateUI();
