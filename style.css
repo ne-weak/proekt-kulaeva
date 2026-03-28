@@ -1,37 +1,33 @@
 :root { --accent: #6366f1; --bg: #0b1121; }
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-body { background: var(--bg); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; overflow: hidden; }
+body { background: var(--bg); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; padding: 20px; overflow: hidden; }
 
-.container { width: 100%; max-width: 500px; padding: 20px; z-index: 10; }
 .glass-card { 
     background: rgba(25, 32, 55, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 30px; padding: 30px; min-height: 400px; max-height: 90vh; display: flex; flex-direction: column;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border-radius: 30px; padding: 30px; width: 100%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* Скролл для длинного текста */
-.result-content { overflow-y: auto; flex-grow: 1; padding-right: 10px; margin-bottom: 20px; }
-.result-content::-webkit-scrollbar { width: 4px; }
-.result-content::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
-
-/* Вопросы */
-.q-top { font-size: 0.8rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
-h2 { font-size: 1.3rem; line-height: 1.4; margin-bottom: 30px; }
-.options { display: grid; gap: 12px; }
+/* Оформление вопросов */
+.q-count { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; }
+h2 { font-size: 1.3rem; margin-bottom: 30px; line-height: 1.4; }
+.options { display: flex; flex-direction: column; gap: 12px; }
 .opt-btn { 
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 18px; 
-    border-radius: 18px; color: #fff; cursor: pointer; text-align: left; transition: 0.2s; font-size: 1rem;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
+    padding: 16px; border-radius: 18px; color: #fff; cursor: pointer; text-align: left; 
+    display: flex; align-items: center; gap: 15px; transition: 0.2s;
 }
+.opt-btn span { background: rgba(99, 102, 241, 0.2); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-weight: 800; color: var(--accent); }
 .opt-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
 
-/* Блоки результата */
-.res-header { font-size: 1.8rem; text-align: center; color: #a5b4fc; font-weight: 800; margin-bottom: 25px; }
-.info-block { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; border-left: 4px solid var(--accent); margin-bottom: 15px; }
-.info-block h4 { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
-.info-block p { font-size: 0.95rem; line-height: 1.6; opacity: 0.9; }
+/* Оформление результата */
+.res-title { font-size: 1.8rem; color: #a5b4fc; text-align: center; font-weight: 800; margin-bottom: 20px; }
+.scroll-box { overflow-y: auto; flex-grow: 1; padding-right: 10px; margin-bottom: 20px; }
+.scroll-box::-webkit-scrollbar { width: 4px; }
+.scroll-box::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
-.btn-main { width: 100%; padding: 20px; background: var(--accent); border: none; border-radius: 20px; color: #fff; font-weight: 800; cursor: pointer; }
+.res-block { margin-bottom: 15px; padding: 18px; background: rgba(255,255,255,0.03); border-radius: 20px; border-left: 4px solid var(--accent); }
+.res-block h4 { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+.res-block p { font-size: 0.95rem; line-height: 1.6; opacity: 0.9; }
 
-/* Фоновое пятно */
-.bg-visual { position: fixed; width: 100vw; height: 100vh; z-index: 1; }
-.blob { position: absolute; top: 50%; left: 50%; width: 400px; height: 400px; background: var(--accent); filter: blur(150px); opacity: 0.2; transform: translate(-50%, -50%); }
+.action-btn { width: 100%; padding: 20px; background: var(--accent); border: none; border-radius: 20px; color: #fff; font-weight: 800; cursor: pointer; font-size: 1rem; }
