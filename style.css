@@ -1,26 +1,25 @@
 :root { --accent: #6366f1; --bg: #0b1121; }
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-body { background: var(--bg); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; padding: 15px; overflow: hidden; }
+body { background: var(--bg); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; padding: 20px; }
 
 .glass-card { 
     background: rgba(25, 32, 55, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); 
-    border-radius: 30px; padding: 25px; width: 100%; max-width: 500px; max-height: 90vh; display: flex; flex-direction: column;
+    border-radius: 30px; padding: 30px; width: 100%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column;
 }
 
-.scroll-area { overflow-y: auto; padding-right: 10px; margin-bottom: 20px; flex-grow: 1; }
-.scroll-area::-webkit-scrollbar { width: 4px; }
-.scroll-area::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+#result-info { overflow-y: auto; flex-grow: 1; padding-right: 10px; margin-bottom: 20px; }
+#result-info::-webkit-scrollbar { width: 4px; }
+#result-info::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
 #result-title { font-size: 1.8rem; color: #a5b4fc; text-align: center; margin-bottom: 20px; font-weight: 800; }
 
-.res-section { margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 15px; border-left: 4px solid var(--accent); }
-.res-section h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; letter-spacing: 1px; }
-.res-section p { font-size: 1rem; line-height: 1.6; opacity: 0.9; }
+.res-block { margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 15px; border-left: 4px solid var(--accent); }
+.res-block h3 { font-size: 0.8rem; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; letter-spacing: 1px; }
+.res-block p { font-size: 1rem; line-height: 1.6; opacity: 0.9; }
 
-.reset-btn { width: 100%; padding: 18px; background: var(--accent); border: none; border-radius: 18px; color: #fff; font-weight: 800; cursor: pointer; }
+.reset-btn { width: 100%; padding: 18px; background: var(--accent); border: none; border-radius: 18px; color: #fff; font-weight: 800; cursor: pointer; transition: 0.2s; }
+.reset-btn:hover { opacity: 0.8; }
 .hidden { display: none !important; }
 
-/* Кнопки теста */
 .options { display: grid; gap: 10px; }
-.opt-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 15px; color: #fff; cursor: pointer; text-align: left; transition: 0.2s; }
-.opt-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--accent); }
+.opt-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 15px; color: #fff; cursor: pointer; text-align: left; }
