@@ -2,19 +2,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Deep Temperament Test</title>
-    <link rel="stylesheet" href="style.css?v=ultra_v3">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на темперамент</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-animation"><div class="circle"></div><div class="circle"></div></div>
+
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
 
     <div class="container">
         <div id="quiz-card" class="glass-card">
-            <div class="quiz-header">
-                <span id="q-counter">Загрузка...</span>
-                <div class="progress-container"><div id="progress"></div></div>
+            <span id="q-counter">Загрузка...</span>
+            <div class="progress-container">
+                <div id="progress"></div>
             </div>
             <h2 id="question-text">Приготовьтесь...</h2>
             <div class="options">
@@ -27,14 +31,14 @@
         </div>
 
         <div id="result-card" class="glass-card hidden">
-            <div class="result-content">
-                <h1 id="result-title">Тип личности</h1>
-                <div id="result-info" class="scroll-box">
-                    </div>
-            </div>
-            <button class="reset-btn" onclick="location.reload()">Пройти заново</button>
+            <h1 id="result-title">Ваш результат</h1>
+            
+            <div id="result-info"></div>
+
+            <button class="reset-btn" onclick="restart()">Пройти заново</button>
         </div>
     </div>
-    <script src="script.js?v=ultra_v3"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
