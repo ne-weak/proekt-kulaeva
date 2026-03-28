@@ -21,105 +21,92 @@ const questions = [
     { q: "Вы часто действуете по первому импульсу, о чем потом можете жалеть?", type: "choleric" }
 ];
 
-const results = {
+const resultsData = {
     "sanguine": {
-        title: "Сангвиник",
-        portrait: "Живой, жизнерадостный и подвижный человек с частой сменой впечатлений.",
-        society: "Вы — душа компании. Легко сходитесь с людьми и обладаете природным обаянием.",
-        career: "Креатор и коммуникатор. Продуктивны, пока работа интересна."
+        t: "Сангвиник",
+        p: "Живой, жизнерадостный и подвижный человек. Легко переключает внимание и быстро адаптируется к новому.",
+        s: "Вы — центр притяжения. Умеете расположить к себе любого и мастерски гасите конфликты юмором.",
+        c: "Вам подходят роли, где нужно много общения: продажи, PR, журналистика или ивент-менеджмент."
     },
     "choleric": {
-        title: "Холерик",
-        portrait: "Быстрый, порывистый и неуравновешенный тип с резкой сменой настроения.",
-        society: "Лидер-реформатор. Часто берете ответственность на себя, но бываете резки.",
-        career: "Кризис-менеджер. Ваша энергия пробивает любые стены."
+        t: "Холерик",
+        p: "Энергичный, страстный и решительный. Вы не боитесь трудностей, но склонны к резким сменам настроения.",
+        s: "Прирожденный лидер. Люди идут за вашей уверенностью, но иногда вы можете казаться слишком властным.",
+        c: "Вы идеальны там, где нужен драйв: предпринимательство, кризис-менеджмент или спорт."
     },
     "phlegmatic": {
-        title: "Флегматик",
-        portrait: "Невозмутимый человек со спокойными стремлениями и ровным настроением.",
-        society: "Островок стабильности. Вас ценят за отсутствие интриг и дельные советы.",
-        career: "Надежный стратег. Доводите дела до конца, когда другие уже сдались."
+        t: "Флегматик",
+        p: "Спокойный, рассудительный и крайне надежный. Вас сложно вывести из равновесия.",
+        s: "Вы — тот самый человек, к которому приходят за дельным советом. В компании вы голос разума.",
+        c: "Ваша сила в системности: инженерия, аналитика, программирование или администрирование."
     },
     "melancholic": {
-        title: "Меланхолик",
-        portrait: "Человек, остро реагирующий на события, склонный к глубоким переживаниям.",
-        society: "Глубокий эмпат. Тонко чувствуете людей и обладаете богатым внутренним миром.",
-        career: "Мастер деталей. В аналитике и искусстве вам нет равных."
+        t: "Меланхолик",
+        p: "Чувствительный, глубокий и вдумчивый. Обладаете высокой эмпатией и вниманием к деталям.",
+        s: "Вы выбираете узкий круг близких друзей. Ваша поддержка всегда искренняя и глубокая.",
+        c: "Вы великолепны в творчестве, науке или психологии. Там, где важна глубина, вам нет равных."
     },
     "phlegmatic-sanguine": {
-        title: "Сангвиник-Флегматик",
-        portrait: "Спокойный оптимист. Редкое сочетание легкости и железной надежности.",
-        society: "Вы общительны, но рассудительны. Кажетесь мягким, но внутри железный стержень.",
-        career: "Универсальный игрок. Умеете и договариваться, и методично работать."
+        t: "Сангвиник-Флегматик",
+        p: "Гармоничный тип: общительность сангвиника подкреплена выдержкой флегматика.",
+        s: "Вы душа компании, которая умеет вовремя остановиться и послушать других. Редкое качество.",
+        c: "Универсал. Можете работать и с людьми, и с документами одинаково эффективно."
     },
     "melancholic-phlegmatic": {
-        title: "Флегматик-Меланхолик",
-        portrait: "Мудрый наблюдатель. Глубокое спокойствие и аналитический склад ума.",
-        society: "Вы видите суть вещей там, где другие видят хаос. Ваш покой — результат опыта.",
-        career: "Идеальный эксперт. Ваша внимательность к деталям исключает ошибки."
+        t: "Флегматик-Меланхолик",
+        p: "Спокойный аналитик. Сочетаете внешнее хладнокровие с богатым внутренним миром.",
+        s: "Вы не любите шумные тусовки, предпочитая тихие беседы. Вас ценят за преданность.",
+        c: "Лучший в планировании и долгосрочных проектах, требующих идеальной точности."
     }
-    // Добавь другие миксы (названия ключей должны быть по алфавиту: choleric-sanguine и т.д.)
 };
 
-let currentIdx = 0;
-let scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
+let current = 0;
+let points = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
 
-function handleAnswer(val) {
-    if (currentIdx < questions.length) {
-        // Логика: 1 (Да) = 5 баллов, 5 (Нет) = 1 балл
-        scores[questions[currentIdx].type] += (6 - val);
-        currentIdx++;
-        updateUI();
-    }
-}
-
-function updateUI() {
-    const quizCard = document.getElementById('quiz-card');
-    const qText = document.getElementById('question-text');
-    const qCounter = document.getElementById('q-counter');
-    
-    if (currentIdx < questions.length) {
-        qText.innerText = questions[currentIdx].q;
-        qCounter.innerText = `Вопрос ${currentIdx + 1} из ${questions.length}`;
+function renderQuiz() {
+    const card = document.getElementById('main-card');
+    if (current < questions.length) {
+        const q = questions[current];
+        card.innerHTML = `
+            <div class="q-header">Вопрос ${current + 1} из ${questions.length}</div>
+            <h2>${q.q}</h2>
+            <div class="options">
+                <button class="opt-btn" onclick="next(1)">Да, точно</button>
+                <button class="opt-btn" onclick="next(2)">Похоже на меня</button>
+                <button class="opt-btn" onclick="next(3)">Сомневаюсь</button>
+                <button class="opt-btn" onclick="next(4)">Не совсем</button>
+                <button class="opt-btn" onclick="next(5)">Точно нет</button>
+            </div>
+        `;
     } else {
-        showResult();
+        showRes();
     }
 }
 
-function showResult() {
-    document.getElementById('quiz-card').classList.add('hidden');
-    const resultCard = document.getElementById('result-card');
-    resultCard.classList.remove('hidden');
+function next(val) {
+    points[questions[current].type] += (6 - val);
+    current++;
+    renderQuiz();
+}
 
-    const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-    const first = sorted[0][0];
-    const second = sorted[1][0];
+function showRes() {
+    const card = document.getElementById('main-card');
+    const sorted = Object.entries(points).sort((a, b) => b[1] - a[1]);
+    const f = sorted[0][0];
+    const s = sorted[1][0];
     
-    // Генерируем ключ микса (всегда по алфавиту для точности связи)
-    let key = (sorted[0][1] - sorted[1][1] < 7) ? [first, second].sort().join('-') : first;
-    const res = results[key] || results[first];
+    let key = (sorted[0][1] - sorted[1][1] < 7) ? [f, s].sort().join('-') : f;
+    const data = resultsData[key] || resultsData[f];
 
-    document.getElementById('result-title').innerText = res.title;
-    document.getElementById('result-info').innerHTML = `
-        <div class="res-block">
-            <h3>Психологический портрет:</h3>
-            <p>${res.portrait}</p>
+    card.innerHTML = `
+        <h1 class="res-title">${data.t}</h1>
+        <div class="result-scroll">
+            <div class="res-block"><h3>Психологический портрет</h3><p>${data.p}</p></div>
+            <div class="res-block"><h3>В обществе</h3><p>${data.s}</p></div>
+            <div class="res-block"><h3>Карьера</h3><p>${data.c}</p></div>
         </div>
-        <div class="res-block">
-            <h3>В обществе:</h3>
-            <p>${res.society}</p>
-        </div>
-        <div class="res-block">
-            <h3>Карьера и цели:</h3>
-            <p>${res.career}</p>
-        </div>
+        <button class="reset-btn" onclick="location.reload()">Пройти заново</button>
     `;
 }
 
-function restart() {
-    currentIdx = 0;
-    scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
-    document.getElementById('result-card').classList.add('hidden');
-    document.getElementById('quiz-card').classList.remove('hidden');
-    updateUI();
-}
+renderQuiz();
