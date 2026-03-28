@@ -1,98 +1,107 @@
+// 1. Данные теста
 const questions = [
-    { q: "Вы мгновенно реагируете на происходящее, часто не успев подумать?", type: "choleric" },
-    { q: "Вам жизненно необходимо постоянно менять обстановку и круг общения?", type: "sanguine" },
-    { q: "Вас практически невозможно вывести из себя даже в острых ситуациях?", type: "phlegmatic" },
-    { q: "Вы замечаете тончайшие детали в поведении людей и остро на них реагируете?", type: "melancholic" },
-    { q: "Ваша речь быстрая, эмоциональная и сопровождается активной мимикой?", type: "choleric" },
-    { q: "Вы легко справляетесь с несколькими сложными делами одновременно?", type: "sanguine" },
-    { q: "Вы долго обдумываете свои слова и поступки, прежде чем действовать?", type: "phlegmatic" },
-    { q: "Мелкие неудачи способны надолго испортить вам настроение?", type: "melancholic" }
+    { text: "Вы мгновенно реагируете на происходящее, часто не успев подумать?", type: "choleric" },
+    { text: "Вам жизненно необходимо постоянно менять обстановку и круг общения?", type: "sanguine" },
+    { text: "Вас практически невозможно вывести из себя даже в острых ситуациях?", type: "phlegmatic" },
+    { text: "Вы замечаете тончайшие детали в поведении людей и остро на них реагируете?", type: "melancholic" },
+    { text: "Ваша речь быстрая, эмоциональная и сопровождается активной мимикой?", type: "choleric" },
+    { text: "Вы легко справляетесь с несколькими сложными делами одновременно?", type: "sanguine" },
+    { text: "Вы долго обдумываете свои слова и поступки, прежде чем действовать?", type: "phlegmatic" },
+    { text: "Мелкие неудачи способны надолго испортить вам настроение?", type: "melancholic" }
 ];
 
 const results = {
     "sanguine": {
-        t: "Сангвиник",
-        p: "Живой, жизнерадостный и подвижный человек. Ваша нервная система быстро переключается на новые задачи.",
-        s: "Вы — душа компании. Легко заводите друзей и умеете разрядить обстановку юмором.",
-        c: "Вам подходят динамичные сферы: продажи, PR, журналистика или организация праздников."
+        title: "Сангвиник",
+        portrait: "Живой, жизнерадостный и очень подвижный человек. Ваша нервная система быстро переключается.",
+        society: "Вы — душа компании и мастер коммуникации. Легко заводите знакомства.",
+        career: "Вам подходят динамичные сферы: продажи, PR, журналистика."
     },
     "choleric": {
-        t: "Холерик",
-        p: "Энергичный, страстный и решительный тип. Вы склонны к порывистости и полной самоотдаче.",
-        s: "Лидер-реформатор. Вы ведете за собой, но иногда бываете излишне прямолинейны с окружающими.",
-        c: "Вы идеальны в управлении проектами, кризис-менеджменте или предпринимательстве."
+        title: "Холерик",
+        portrait: "Энергичный, страстный и решительный человек. Вы склонны к бурным эмоциям.",
+        society: "Прирожденный лидер. Люди тянутся к вашей уверенности.",
+        career: "Вы незаменимы в управлении и кризисных ситуациях."
     },
     "phlegmatic": {
-        t: "Флегматик",
-        p: "Невозмутимый, спокойный и рассудительный человек. Вас практически невозможно вывести из себя.",
-        s: "«Островок стабильности». В коллективе вас ценят за отсутствие интриг и трезвый взгляд на вещи.",
-        c: "Ваша сила в системности: IT-разработка, аналитика, инженерия или администрирование."
+        title: "Флегматик",
+        portrait: "Невозмутимый, спокойный и рассудительный человек.",
+        society: "Островок стабильности. В коллективе вас ценят за отсутствие интриг.",
+        career: "Ваша стихия — системность. Аналитика, разработка, финансы."
     },
     "melancholic": {
-        t: "Меланхолик",
-        p: "Глубокий, вдумчивый и чувствительный человек. Вы чувствуете нюансы, которые не видят другие.",
-        s: "Тонкий эмпат. Вы предпочитаете узкий круг близких людей, где вас ценят за искренность.",
-        c: "Вы мастер деталей. Прекрасно проявите себя в дизайне, психологии, науке или искусстве."
+        title: "Меланхолик",
+        portrait: "Глубокий, вдумчивый и крайне чувствительный человек.",
+        society: "Тонкий эмпат. Вы выбираете немногих, но преданных друзей.",
+        career: "Ваш талант раскрывается в творчестве, науке или психологии."
     },
     "phlegmatic-sanguine": {
-        t: "Сангвиник-Флегматик",
-        p: "Спокойный оптимист. Редкое сочетание легкости в общении и железной внутренней надежности.",
-        s: "Вы общительны, но рассудительны. Кажетесь мягким, но внутри у вас мощный стержень.",
-        c: "Универсальный игрок. Можете как вдохновлять команду, так и методично доводить дело до результата."
+        title: "Сангвиник-Флегматик",
+        portrait: "Спокойный оптимист. Редкое сочетание легкости и железной надежности.",
+        society: "Вы общительны, но очень рассудительны.",
+        career: "Универсальный специалист. Умеете и договариваться, и методично работать."
     }
 };
 
-let current = 0;
-let points = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
+// 2. Логика приложения
+let currentIdx = 0;
+let scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
 
+// Главная функция отрисовки
 function render() {
     const app = document.getElementById('app');
-    
-    if (current < questions.length) {
+    if (!app) return;
+
+    if (currentIdx < questions.length) {
+        // Рендерим вопрос
         app.innerHTML = `
-            <span class="q-top">Вопрос ${current + 1} из ${questions.length}</span>
-            <h2>${questions[current].q}</h2>
+            <span class="q-num">Вопрос ${currentIdx + 1} из ${questions.length}</span>
+            <h2>${questions[currentIdx].text}</h2>
             <div class="options">
-                <button class="opt-btn" onclick="step(1)">Да, это про меня</button>
-                <button class="opt-btn" onclick="step(2)">Скорее да</button>
-                <button class="opt-btn" onclick="step(3)">Когда как</button>
-                <button class="opt-btn" onclick="step(4)">Скорее нет</button>
-                <button class="opt-btn" onclick="step(5)">Точно нет</button>
+                <button class="opt-btn" onclick="handleAnswer(1)"><span>1</span> Да, точно</button>
+                <button class="opt-btn" onclick="handleAnswer(2)"><span>2</span> Похоже на меня</button>
+                <button class="opt-btn" onclick="handleAnswer(3)"><span>3</span> Сомневаюсь</button>
+                <button class="opt-btn" onclick="handleAnswer(4)"><span>4</span> Не совсем</button>
+                <button class="opt-btn" onclick="handleAnswer(5)"><span>5</span> Точно нет</button>
             </div>
         `;
     } else {
-        const sorted = Object.entries(points).sort((a, b) => b[1] - a[1]);
-        const first = sorted[0][0];
-        const second = sorted[1][0];
+        // Вычисляем и рендерим результат
+        const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        const top1 = sorted[0][0];
+        const top2 = sorted[1][0];
         
-        let key = (sorted[0][1] - sorted[1][1] < 7) ? [first, second].sort().join('-') : first;
-        const res = results[key] || results[first];
+        let key = (sorted[0][1] - sorted[1][1] < 5) ? [top1, top2].sort().join('-') : top1;
+        const res = results[key] || results[top1];
 
         app.innerHTML = `
-            <h1 class="res-header">${res.t}</h1>
-            <div class="result-content">
-                <div class="info-block">
+            <h1 class="res-title">${res.title}</h1>
+            <div class="scroll-box">
+                <div class="section">
                     <h4>Психологический портрет</h4>
-                    <p>${res.p}</p>
+                    <p>${res.portrait}</p>
                 </div>
-                <div class="info-block">
+                <div class="section">
                     <h4>В обществе</h4>
-                    <p>${res.s}</p>
+                    <p>${res.society}</p>
                 </div>
-                <div class="info-block">
-                    <h4>Карьера и цели</h4>
-                    <p>${res.c}</p>
+                <div class="section">
+                    <h4>Карьера</h4>
+                    <p>${res.career}</p>
                 </div>
             </div>
-            <button class="btn-main" onclick="location.reload()">Начать заново</button>
+            <button class="restart-btn" onclick="location.reload()">Начать заново</button>
         `;
     }
 }
 
-function step(val) {
-    points[questions[current].type] += (6 - val);
-    current++;
+// Обработка клика
+window.handleAnswer = function(val) {
+    const type = questions[currentIdx].type;
+    scores[type] += (6 - val); // 1 = 5 баллов, 5 = 1 балл
+    currentIdx++;
     render();
-}
+};
 
-render();
+// 3. ЗАПУСК при загрузке страницы
+document.addEventListener('DOMContentLoaded', render);
