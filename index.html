@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Тест на темперамент</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Полу-профессиональный тест темперамента</title>
+    <link rel="stylesheet" href="style.css?v=final">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-animation">
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
+    <div class="bg-animation"><div class="circle"></div><div class="circle"></div></div>
 
     <div class="container">
         <div id="quiz-card" class="glass-card">
-            <div class="progress-container">
-                <div id="progress"></div>
+            <div class="quiz-header">
+                <span id="q-counter">Вопрос 1 из 20</span>
+                <div class="progress-container"><div id="progress"></div></div>
             </div>
             
             <div id="quiz-content">
@@ -34,9 +32,9 @@
         <div id="result-card" class="glass-card hidden">
             <h1 id="result-title">Ваш тип</h1>
             <div id="result-desc" class="description"></div>
-            <button class="reset-btn" onclick="location.reload()">Начать заново</button>
+            <button class="reset-btn" onclick="location.reload()">Пройти заново</button>
         </div>
     </div>
-    <script src="script.js?v=999"></script>
+    <script src="script.js?v=final"></script>
 </body>
 </html>
