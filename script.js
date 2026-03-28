@@ -24,21 +24,21 @@ const questions = [
 const results = {
     "sanguine": {
         title: "Сангвиник",
-        portrait: "Живой, жизнерадостный и подвижный человек с быстрой реакцией на события.",
-        society: "Душа компании. Легко сходится с людьми и обладает природным обаянием.",
-        career: "Креатор и коммуникатор. Продуктивен, пока работа интересна."
+        portrait: "Живой, жизнерадостный и подвижный человек с частой сменой впечатлений.",
+        society: "Вы — душа компании. Легко сходитесь с людьми и обладаете природным обаянием.",
+        career: "Креатор и коммуникатор. Продуктивны, пока работа интересна."
     },
     "choleric": {
         title: "Холерик",
-        portrait: "Быстрый, страстный и порывистый, но неуравновешенный тип с резкой сменой настроения.",
-        society: "Лидер-реформатор. Берет на себя ответственность, но бывает излишне резок.",
+        portrait: "Быстрый, порывистый и неуравновешенный тип с резкой сменой настроения.",
+        society: "Лидер-реформатор. Часто берете ответственность на себя, но бываете резки.",
         career: "Кризис-менеджер. Ваша энергия пробивает любые стены."
     },
     "phlegmatic": {
         title: "Флегматик",
         portrait: "Невозмутимый человек со спокойными стремлениями и ровным настроением.",
-        society: "Островок стабильности. В коллективе вас ценят за отсутствие интриг и объективность.",
-        career: "Надежный стратег. Вы доводите дела до конца, когда другие уже сдались."
+        society: "Островок стабильности. Вас ценят за отсутствие интриг и дельные советы.",
+        career: "Надежный стратег. Доводите дела до конца, когда другие уже сдались."
     },
     "melancholic": {
         title: "Меланхолик",
@@ -46,13 +46,19 @@ const results = {
         society: "Глубокий эмпат. Тонко чувствуете людей и обладаете богатым внутренним миром.",
         career: "Мастер деталей. В аналитике и искусстве вам нет равных."
     },
-    "sanguine-phlegmatic": {
+    "phlegmatic-sanguine": {
         title: "Сангвиник-Флегматик",
         portrait: "Спокойный оптимист. Редкое сочетание легкости и железной надежности.",
-        society: "Вы общительны, но очень рассудительны. Кажетесь мягким, но внутри стержень.",
-        career: "Универсальный игрок. Умеете договариваться и методично работать на результат."
+        society: "Вы общительны, но рассудительны. Кажетесь мягким, но внутри железный стержень.",
+        career: "Универсальный игрок. Умеете и договариваться, и методично работать."
+    },
+    "melancholic-phlegmatic": {
+        title: "Флегматик-Меланхолик",
+        portrait: "Мудрый наблюдатель. Глубокое спокойствие и аналитический склад ума.",
+        society: "Вы видите суть вещей там, где другие видят хаос. Ваш покой — результат опыта.",
+        career: "Идеальный эксперт. Ваша внимательность к деталям исключает ошибки."
     }
-    // Остальные миксы добавь по этой же структуре (title, portrait, society, career)
+    // Добавь другие миксы (названия ключей должны быть по алфавиту: choleric-sanguine и т.д.)
 };
 
 let currentIdx = 0;
@@ -60,6 +66,7 @@ let scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
 
 function handleAnswer(val) {
     if (currentIdx < questions.length) {
+        // Логика: 1 (Да) = 5 баллов, 5 (Нет) = 1 балл
         scores[questions[currentIdx].type] += (6 - val);
         currentIdx++;
         updateUI();
@@ -67,9 +74,13 @@ function handleAnswer(val) {
 }
 
 function updateUI() {
+    const quizCard = document.getElementById('quiz-card');
+    const qText = document.getElementById('question-text');
+    const qCounter = document.getElementById('q-counter');
+    
     if (currentIdx < questions.length) {
-        document.getElementById('question-text').innerText = questions[currentIdx].q;
-        document.getElementById('q-counter').innerText = `Вопрос ${currentIdx + 1} из ${questions.length}`;
+        qText.innerText = questions[currentIdx].q;
+        qCounter.innerText = `Вопрос ${currentIdx + 1} из ${questions.length}`;
     } else {
         showResult();
     }
@@ -77,30 +88,38 @@ function updateUI() {
 
 function showResult() {
     document.getElementById('quiz-card').classList.add('hidden');
-    document.getElementById('result-card').classList.remove('hidden');
+    const resultCard = document.getElementById('result-card');
+    resultCard.classList.remove('hidden');
 
     const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
     const first = sorted[0][0];
     const second = sorted[1][0];
     
+    // Генерируем ключ микса (всегда по алфавиту для точности связи)
     let key = (sorted[0][1] - sorted[1][1] < 7) ? [first, second].sort().join('-') : first;
     const res = results[key] || results[first];
 
     document.getElementById('result-title').innerText = res.title;
     document.getElementById('result-info').innerHTML = `
-        <div class="scroll-area">
-            <div class="res-section">
-                <h3>Психологический портрет:</h3>
-                <p>${res.portrait}</p>
-            </div>
-            <div class="res-section">
-                <h3>В обществе:</h3>
-                <p>${res.society}</p>
-            </div>
-            <div class="res-section">
-                <h3>Карьера и цели:</h3>
-                <p>${res.career}</p>
-            </div>
+        <div class="res-block">
+            <h3>Психологический портрет:</h3>
+            <p>${res.portrait}</p>
+        </div>
+        <div class="res-block">
+            <h3>В обществе:</h3>
+            <p>${res.society}</p>
+        </div>
+        <div class="res-block">
+            <h3>Карьера и цели:</h3>
+            <p>${res.career}</p>
         </div>
     `;
+}
+
+function restart() {
+    currentIdx = 0;
+    scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
+    document.getElementById('result-card').classList.add('hidden');
+    document.getElementById('quiz-card').classList.remove('hidden');
+    updateUI();
 }
