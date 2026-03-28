@@ -2,22 +2,38 @@ const questions = [
     { q: "Вы мгновенно реагируете на происходящее, часто не успев подумать?", type: "choleric" },
     { q: "Вам жизненно необходимо менять обстановку и круг общения?", type: "sanguine" },
     { q: "Вас практически невозможно вывести из себя?", type: "phlegmatic" },
-    { q: "Вы замечаете тончайшие детали в поведении людей?", type: "melancholic" },
-    { q: "Ваша речь быстрая и эмоциональная?", type: "choleric" },
-    { q: "Вы легко справляетесь с несколькими делами сразу?", type: "sanguine" },
-    { q: "Вы долго обдумываете свои слова?", type: "phlegmatic" },
-    { q: "Мелкие неудачи выбивают вас из колеи?", type: "melancholic" },
-    { q: "Вы склонны к риску и лидерству?", type: "choleric" },
-    { q: "Вы предпочитаете яркие впечатления анализу?", type: "sanguine" },
-    { q: "Вам важнее всего порядок и тишина?", type: "phlegmatic" },
-    { q: "Вы часто чувствуете потребность в одиночестве?", type: "melancholic" }
+    { q: "Вы замечаете тончайшие детали в поведении людей и остро на них реагируете?", type: "melancholic" },
+    { q: "Ваша речь быстрая, эмоциональная и сопровождается активной мимикой?", type: "choleric" },
+    { q: "Вы легко справляетесь с несколькими делами одновременно?", type: "sanguine" },
+    { q: "Вы долго обдумываете свои слова, прежде чем высказаться в группе?", type: "phlegmatic" },
+    { q: "Мелкие неудачи способны надолго выбить вас из колеи?", type: "melancholic" },
+    { q: "Вы склонны к риску и часто берете на себя роль лидера в конфликте?", type: "choleric" },
+    { q: "Вы предпочитаете яркие впечатления глубокому анализу ситуации?", type: "sanguine" },
+    { q: "В работе вам важнее всего порядок, предсказуемость и тишина?", type: "phlegmatic" },
+    { q: "Вы часто чувствуете потребность в одиночестве для восстановления сил?", type: "melancholic" }
 ];
 
 const results = {
-    sanguine: { title: "Сангвиник", desc: "<b>Психологический портрет:</b> Живой, подвижный и оптимистичный тип. Вы легко адаптируетесь к новым условиям и быстро находите общий язык с окружающими." },
-    choleric: { title: "Холерик", desc: "<b>Психологический портрет:</b> Энергичный, страстный и решительный лидер. Ваша сила в действии, но важно уметь вовремя остановиться и выслушать других." },
-    phlegmatic: { title: "Флегматик", desc: "<b>Психологический портрет:</b> Спокойный, надежный и невозмутимый человек. Вы — опора любого коллектива благодаря своей выдержке и рассудительности." },
-    melancholic: { title: "Меланхолик", desc: "<b>Психологический портрет:</b> Чувствительный, вдумчивый и преданный тип. Вы видите глубину там, где другие проходят мимо. Ваша эмпатия — ваш дар." }
+    sanguine: { 
+        title: "Сангвиник", 
+        desc: "<b>Психологический портрет:</b> Живой, подвижный человек с частой сменой впечатлений. <br><br><b>В обществе:</b> Вы — 'социальный магнит'. В любой компании вы быстро становитесь центром внимания, легко гасите конфликты шутками и заражаете других своим энтузиазмом. Вы идеальный командный игрок и коммуникатор.",
+        fact: "Интересный факт: Согласно исследованиям, сангвиники проще всего переносят смену часовых поясов и быстрее адаптируются к новому климату."
+    },
+    choleric: { 
+        title: "Холерик", 
+        desc: "<b>Психологический портрет:</b> Быстрый, страстный, порывистый, однако совершенно неуравновешенный тип. <br><br><b>В обществе:</b> Вы — лидер-реформатор. В группе вы часто берете на себя ответственность в критические моменты. Ваша прямолинейность помогает делу, но иногда ранит окружающих. Вы тот, кто заставляет общество двигаться вперед.",
+        fact: "Интересный факт: Холерики обладают самой быстрой реакцией среди всех типов, что делает их отличными спринтерами и антикризисными менеджерами."
+    },
+    phlegmatic: { 
+        title: "Флегматик", 
+        desc: "<b>Психологический портрет:</b> Невозмутимый человек со спокойными стремлениями и ровным настроением. <br><br><b>В обществе:</b> Вы — 'островок стабильности'. В коллективе вас ценят за отсутствие интриг и умение объективно оценивать ситуацию. Вы лучший слушатель, к которому приходят за дельным, спокойным советом.",
+        fact: "Интересный факт: Флегматики дольше всех сохраняют работоспособность при монотонной деятельности, где другие типы быстро допускают ошибки от скуки."
+    },
+    melancholic: { 
+        title: "Меланхолик", 
+        desc: "<b>Психологический портрет:</b> Впечатлительный человек, склонный к глубоким переживаниям даже незначительных событий. <br><br><b>В обществе:</b> Вы — эмпат и аналитик. В отношениях вы самый преданный друг, который чувствует боль другого как свою. В группе вы замечаете риски и детали, которые упускают остальные, обеспечивая глубину любому проекту.",
+        fact: "Интересный факт: Большинство великих поэтов, философов и композиторов были меланхоликами из-за их способности к глубочайшей рефлексии."
+    }
 };
 
 let currentIdx = 0;
@@ -25,44 +41,40 @@ let scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
 
 function handleAnswer(val) {
     if (currentIdx >= questions.length) return;
-
-    const type = questions[currentIdx].type;
-    scores[type] += (5 - val); // 1 (Да) = 4 балла, 5 (Нет) = 0 баллов
-    
+    scores[questions[currentIdx].type] += (5 - val);
     currentIdx++;
     updateUI();
 }
 
 function updateUI() {
     const qText = document.getElementById('question-text');
-    const progressBar = document.getElementById('progress');
+    const progress = document.getElementById('progress');
 
     if (currentIdx < questions.length) {
-        // Обновляем прогресс и текст вопроса
-        if (progressBar) progressBar.style.width = `${(currentIdx / questions.length) * 100}%`;
-        if (qText) qText.innerText = questions[currentIdx].q;
+        qText.style.opacity = 0;
+        setTimeout(() => {
+            qText.innerText = questions[currentIdx].q;
+            qText.style.opacity = 1;
+        }, 200);
+        progress.style.width = (currentIdx / questions.length * 100) + "%";
     } else {
-        // Показываем результат
         showResult();
     }
 }
 
 function showResult() {
-    const quizCard = document.getElementById('quiz-card');
-    const resultCard = document.getElementById('result-card');
-    
-    if (quizCard && resultCard) {
-        quizCard.classList.add('hidden');
-        resultCard.classList.remove('hidden');
+    document.getElementById('quiz-card').classList.add('hidden');
+    const resCard = document.getElementById('result-card');
+    resCard.classList.remove('hidden');
 
-        const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-        
-        document.getElementById('result-title').innerText = results[winner].title;
-        document.getElementById('result-desc').innerHTML = results[winner].desc;
-        // Заполняем линию до конца на финале
-        document.getElementById('progress').style.width = "100%";
-    }
+    const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    
+    document.getElementById('result-title').innerText = results[winner].title;
+    document.getElementById('result-desc').innerHTML = `
+        ${results[winner].desc}
+        <div class="fact-box">${results[winner].fact}</div>
+    `;
+    document.getElementById('progress').style.width = "100%";
 }
 
-// Инициализация при загрузке
-window.onload = updateUI;
+updateUI();
