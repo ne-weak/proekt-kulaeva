@@ -2,13 +2,13 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
 body { background: var(--bg); min-height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; padding: 15px; overflow: hidden; }
 
-/* Фон */
+/* фон */
 .bg-visual { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #0f172a; }
 .circle { position: absolute; width: 300px; height: 300px; background: rgba(99, 102, 241, 0.1); border-radius: 50%; filter: blur(100px); }
 .circle:nth-child(1) { top: -100px; left: -100px; }
 .circle:nth-child(2) { bottom: -100px; right: -100px; }
 
-/* Карточка */
+/* карточка */
 .container { width: 100%; max-width: 520px; z-index: 10; }
 .glass-card { 
     background: rgba(25, 32, 55, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -16,7 +16,7 @@ body { background: var(--bg); min-height: 100vh; display: flex; justify-content:
     box-shadow: 0 40px 80px rgba(0,0,0,0.7); max-height: 90vh; display: flex; flex-direction: column;
 }
 
-/* Вопросы */
+/* вопросы */
 .q-top { color: var(--accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; display: block; }
 h2 { font-size: 1.4rem; margin-bottom: 30px; line-height: 1.5; font-weight: 800; text-align: left; }
 .options { display: grid; gap: 12px; }
@@ -28,7 +28,7 @@ h2 { font-size: 1.4rem; margin-bottom: 30px; line-height: 1.5; font-weight: 800;
 .opt-btn span { background: rgba(99, 102, 241, 0.2); width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-right: 15px; color: #a5b4fc; font-weight: 800; font-size: 1.1rem; }
 .opt-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--accent); transform: translateY(-2px); }
 
-/* Результаты */
+/* результаты */
 .mix-label { color: var(--accent); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; display: block; text-align: center; }
 .res-title { font-size: 2.1rem; color: #a5b4fc; text-align: center; font-weight: 800; margin-bottom: 25px; line-height: 1.2; }
 
@@ -43,7 +43,7 @@ h2 { font-size: 1.4rem; margin-bottom: 30px; line-height: 1.5; font-weight: 800;
 .reset-btn { width: 100%; padding: 22px; background: var(--accent); border: none; border-radius: 22px; color: #fff; font-weight: 800; cursor: pointer; font-size: 1.1rem; box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4); transition: 0.2s; }
 .reset-btn:hover { opacity: 0.8; transform: translateY(-2px); }
 
-/* Адаптив под мобилки */
+/* адаптив под мобилки */
 @media (max-width: 480px) {
     .glass-card { padding: 25px 20px; border-radius: 30px; }
     h2 { font-size: 1.2rem; margin-bottom: 25px; }
