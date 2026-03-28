@@ -3,42 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест на темперамент</title>
+    <title>Temperament Test</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="bg-animation">
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
-
     <div class="container">
-        <div id="quiz-card" class="glass-card">
-            <span id="q-counter">Загрузка...</span>
-            <div class="progress-container">
-                <div id="progress"></div>
+        <div id="main-card" class="glass-card">
             </div>
-            <h2 id="question-text">Приготовьтесь...</h2>
-            <div class="options">
-                <button class="opt-btn" onclick="handleAnswer(1)"><span>1</span> Да, точно</button>
-                <button class="opt-btn" onclick="handleAnswer(2)"><span>2</span> Похоже на меня</button>
-                <button class="opt-btn" onclick="handleAnswer(3)"><span>3</span> Сомневаюсь</button>
-                <button class="opt-btn" onclick="handleAnswer(4)"><span>4</span> Не совсем</button>
-                <button class="opt-btn" onclick="handleAnswer(5)"><span>5</span> Точно нет</button>
-            </div>
-        </div>
-
-        <div id="result-card" class="glass-card hidden">
-            <h1 id="result-title">Ваш результат</h1>
-            
-            <div id="result-info"></div>
-
-            <button class="reset-btn" onclick="restart()">Пройти заново</button>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
