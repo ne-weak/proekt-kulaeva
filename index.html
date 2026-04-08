@@ -1,74 +1,71 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PersonaScope — Портал самопознания</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-</head>
-<body>
-    <div class="bg-visual"><div class="circle"></div><div class="circle"></div></div>
+<header class="main-header">
+    <div class="logo">Persona<span>Scope</span></div>
+    <nav>
+        <a href="#about">О проекте</a>
+        <a href="#experts">Эксперты</a>
+        <button class="nav-btn" onclick="scrollToApp()">Начать тест</button>
+    </nav>
+</header>
 
-    <header class="main-header">
-        <div class="logo">Persona<span>Scope</span></div>
-        <nav>
-            <a href="#about">О проекте</a>
-            <a href="#experts">Эксперты</a>
-            <button class="nav-btn" onclick="scrollToApp()">Начать тест</button>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Добро пожаловать в мир твоего «Я»</h1>
-                <p>Темперамент — это фундамент вашей личности. Понимание своих биологических настроек помогает эффективнее строить карьеру, избегать выгорания и находить общий язык с близкими.</p>
-                <div class="hero-btns">
-                    <button class="primary-btn" onclick="scrollToApp()">Узнать свой тип</button>
-                    <a href="#about" class="secondary-link">Узнать больше ↓</a>
-                </div>
+<main>
+    <section class="hero" id="home">
+        <div class="hero-content centered">
+            <h1>Добро пожаловать в мир твоего «Я»</h1>
+            <p>Темперамент — это врожденная особенность психики. Понимание своих настроек помогает строить карьеру без выгорания и находить идеальный баланс в отношениях.</p>
+            <div class="hero-btns">
+                <button class="primary-btn" onclick="scrollToApp()">Узнать свой тип</button>
+                <a href="#about" class="secondary-link">Узнать больше ↓</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="info-section" id="about">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Почему это важно?</h3>
-                    <p>90% конфликтов происходят из-за разницы темпераментов. Узнав свой тип, вы перестанете винить себя за медлительность или вспыльчивость.</p>
-                </div>
-                <div class="info-card">
-                    <h3>3 уровня анализа</h3>
-                    <p>Мы подготовили глубокое исследование: от базовых реакций до поведения в стрессовых ситуациях и влияния на вас окружающих.</p>
-                </div>
+    <section class="info-section" id="about">
+        <h2 class="section-title">О проекте и пользе</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Почему это важно?</h3>
+                <p>Ваш темперамент определяет скорость реакции, выносливость и порог чувствительности. Знание своего типа позволяет перестать бороться с природой и начать использовать свои сильные стороны.</p>
             </div>
-        </section>
-
-        <section class="experts" id="experts">
-            <h2 class="section-title">Ведущие эксперты</h2>
-            <div class="expert-list">
-                <div class="expert-item">
-                    <div class="expert-photo" style="background-image: url('https://img.freepik.com/free-photo/handsome-young-businessman-suit_273609-6513.jpg')"></div>
-                    <h4>Лев Выготский</h4>
-                    <p>Основатель культурно-исторической теории. Его труды легли в основу понимания развития личности.</p>
-                </div>
-                <div class="expert-item">
-                    <div class="expert-photo" style="background-image: url('https://img.freepik.com/free-photo/portrait-of-confident-mature-businessman_23-2148911835.jpg')"></div>
-                    <h4>Алексей Леонтьев</h4>
-                    <p>Создатель теории деятельности. Изучал, как наши поступки формируют сознание.</p>
-                </div>
+            <div class="info-card">
+                <h3>Биологический фундамент</h3>
+                <p>В отличие от характера, темперамент нельзя изменить — он заложен генетически. Это ваш «процессор», и проект поможет вам понять его технические характеристики.</p>
             </div>
-        </section>
-
-        <section class="app-section" id="test-app">
-            <div class="container">
-                <div id="app" class="glass-card">
-                    </div>
+            <div class="info-card">
+                <h3>3 уровня анализа</h3>
+                <p>Мы предлагаем комплексный подход: базовый тест на тип, проверку социальной адаптации и анализ того, как на вас влияют другие темпераменты.</p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <section class="experts" id="experts">
+        <h2 class="section-title">Ведущие эксперты</h2>
+        <div class="expert-list">
+            <div class="expert-item">
+                <div class="expert-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Lev_Vygotsky.jpg')"></div>
+                <h4>Лев Выготский</h4>
+                <p>Классик психологии. Разработал теорию развития высших психических функций.</p>
+            </div>
+            <div class="expert-item">
+                <div class="expert-photo" style="background-image: url('https://i.pinimg.com/736x/88/54/10/885410659616d649520c84136473188d.jpg')"></div>
+                <h4>Юлия Гиппенрейтер</h4>
+                <p>Современный эксперт, автор бестселлеров по психологии общения и воспитания.</p>
+            </div>
+            <div class="expert-item">
+                <div class="expert-photo" style="background-image: url('https://vladimirova.center/wp-content/uploads/2022/10/photo_2022-10-18_17-48-26.jpg')"></div>
+                <h4>Мария Осорина</h4>
+                <p>Профессор, специалист по интеллектуальной деятельности и детской психологии.</p>
+            </div>
+            <div class="expert-item">
+                <div class="expert-photo" style="background-image: url('https://psibook.com/images/psychologists/leontiev-aleksey-nikolaevich.jpg')"></div>
+                <h4>Алексей Леонтьев</h4>
+                <p>Создатель фундаментальной теории деятельности в психологии.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section" id="test-app">
+        <div class="container">
+            <div id="app" class="glass-card"></div>
+        </div>
+    </section>
+</main>
