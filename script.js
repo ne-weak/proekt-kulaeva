@@ -1,42 +1,42 @@
 const tests = {
     main: {
-        title: "Тип личности",
+        title: "Базовый темперамент",
         questions: [
-            { q: "Вы мгновенно реагируете на происходящее, часто не успев подумать?", type: "choleric" },
-            { q: "Вам жизненно необходимо постоянно менять обстановку и круг общения?", type: "sanguine" },
-            { q: "Вас практически невозможно вывести из себя даже в острых ситуациях?", type: "phlegmatic" },
-            { q: "Вы замечаете тончайшие детали в поведении людей и остро на них реагируете?", type: "melancholic" },
-            { q: "Вы склонны к риску и часто берете на себя роль лидера?", type: "choleric" },
-            { q: "Вы быстро забываете обиды и легко прощаете людей?", type: "sanguine" },
-            { q: "Вам важнее всего стабильность, предсказуемость и тишина?", type: "phlegmatic" },
-            { q: "Мелкие неудачи способны надолго испортить вам настроение?", type: "melancholic" }
+            { q: "Вы быстро переключаетесь между задачами и любите перемены?", type: "sanguine" },
+            { q: "Вы часто действуете импульсивно, а потом анализируете?", type: "choleric" },
+            { q: "Вам требуется много времени на обдумывание перед ответом?", type: "phlegmatic" },
+            { q: "Вы глубоко переживаете даже мелкие замечания в свой адрес?", type: "melancholic" },
+            { q: "Вы чувствуете прилив сил в центре шумного мероприятия?", type: "sanguine" },
+            { q: "Вы склонны открыто проявлять гнев, если что-то идет не так?", type: "choleric" },
+            { q: "Вас практически невозможно вывести из равновесия?", type: "phlegmatic" },
+            { q: "Вы предпочитаете одиночество шумным компаниям?", type: "melancholic" }
         ]
     },
     social: {
-        title: "Личность в обществе",
+        title: "Социальный профиль",
         questions: [
-            { q: "В новой компании вы первым идете на контакт?", type: "sanguine" },
-            { q: "Вам трудно сдерживать раздражение, если кто-то тупит?", type: "choleric" },
-            { q: "Вы предпочитаете слушать и анализировать, а не говорить?", type: "phlegmatic" },
-            { q: "Вам кажется, что окружающие часто вас недооценивают или не понимают?", type: "melancholic" }
+            { q: "Вам легко заговорить с незнакомым человеком?", type: "sanguine" },
+            { q: "Вы часто берете на себя роль лидера в группе?", type: "choleric" },
+            { q: "Вы предпочитаете наблюдать за конфликтом со стороны?", type: "phlegmatic" },
+            { q: "Вы часто ищете скрытый смысл в словах собеседника?", type: "melancholic" }
         ]
     },
     influence: {
-        title: "Влияние окружения",
+        title: "Факторы влияния",
         questions: [
-            { q: "Энергичные люди вас вдохновляют, а не утомляют?", type: "sanguine" },
-            { q: "Чужое давление вызывает у вас мгновенное желание дать отпор?", type: "choleric" },
-            { q: "Вы легко сохраняете спокойствие, когда вокруг все паникуют?", type: "phlegmatic" },
-            { q: "Вы сильно зависите от эмоционального фона в коллективе?", type: "melancholic" }
+            { q: "Чужой оптимизм легко передается вам?", type: "sanguine" },
+            { q: "Вы мгновенно даете отпор на любую попытку давления?", type: "choleric" },
+            { q: "Вы игнорируете чужую панику и сохраняете спокойствие?", type: "phlegmatic" },
+            { q: "Вы долго восстанавливаетесь после тяжелого разговора?", type: "melancholic" }
         ]
     }
 };
 
 const resultsData = {
-    "sanguine": { t: "Сангвиник", p: "Живой, жизнерадостный человек. Вы мгновенно адаптируетесь к новому.", s: "Вы — социальный магнит и душа любой компании.", c: "PR, ивенты, продажи — ваша стихия." },
-    "choleric": { t: "Холерик", p: "Страстный и решительный. У вас огромный запас энергии и драйва.", s: "Прирожденный лидер, который ведет за собой.", c: "Управление проектами и кризис-менеджмент." },
-    "phlegmatic": { t: "Флегматик", p: "Невозмутимый и рассудительный. Обладаете завидным упорством.", s: "Островок безопасности для друзей и коллег.", c: "IT, аналитика и глубокие исследования." },
-    "melancholic": { t: "Меланхолик", p: "Вдумчивый и чувствительный. Видите то, что другие упускают.", s: "Тонкий эмпат. Выбираете качество общения, а не количество.", c: "Творчество, психология и наука." }
+    "sanguine": { t: "Сангвиник", p: "Вы — оптимист с гибкой нервной системой. Легко адаптируетесь к переменам.", s: "Социальный магнит. Умеете вдохновлять людей и разряжать обстановку.", c: "Идеальны в коммуникациях, медиа и продажах." },
+    "choleric": { t: "Холерик", p: "Человек действия. Обладаете огромной энергией, но склонны к перепадам настроения.", s: "Прирожденный лидер, который ведет за собой силой воли.", c: "Предпринимательство, управление, кризис-менеджмент." },
+    "phlegmatic": { t: "Флегматик", p: "Олицетворение спокойствия. Ваши сильные стороны — выдержка и упорство.", s: "Надежный партнер, на которого всегда можно положиться.", c: "IT, архитектура, глубокая аналитика и инженерия." },
+    "melancholic": { t: "Меланхолик", p: "Вдумчивая и глубокая личность. Тонко чувствуете нюансы мира.", s: "Эмпатичный слушатель. Цените искренность и глубину отношений.", c: "Творчество, психология, наука и аудит." }
 };
 
 let currentTest = null;
@@ -52,11 +52,11 @@ function showMenu() {
     const app = document.getElementById('app');
     app.innerHTML = `
         <span class="q-top">Тестирование</span>
-        <h2>Выберите направление анализа:</h2>
+        <h2 style="margin-bottom:25px">Выберите область анализа:</h2>
         <div class="options">
-            <button class="opt-btn" onclick="startTest('main')"><span>1</span> Базовый тип личности</button>
-            <button class="opt-btn" onclick="startTest('social')"><span>2</span> Социальный профиль</button>
-            <button class="opt-btn" onclick="startTest('influence')"><span>3</span> Факторы влияния</button>
+            <button class="opt-btn" onclick="startTest('main')"><span>1</span> Базовый психотип</button>
+            <button class="opt-btn" onclick="startTest('social')"><span>2</span> Я в обществе</button>
+            <button class="opt-btn" onclick="startTest('influence')"><span>3</span> Факторы стресса</button>
         </div>
     `;
 }
@@ -75,16 +75,15 @@ function renderQuestion() {
         <span class="q-top">${currentTest.title}: ${currentQ + 1} / ${currentTest.questions.length}</span>
         <h2>${q.q}</h2>
         <div class="options">
-            <button class="opt-btn" onclick="handle(1)"><span>A</span> Полностью согласен</button>
-            <button class="opt-btn" onclick="handle(2)"><span>B</span> Скорее да</button>
-            <button class="opt-btn" onclick="handle(4)"><span>C</span> Скорее нет</button>
-            <button class="opt-btn" onclick="handle(5)"><span>D</span> Точно нет</button>
+            <button class="opt-btn" onclick="handle(5)"><span>A</span> Полностью согласен</button>
+            <button class="opt-btn" onclick="handle(3)"><span>B</span> Скорее да</button>
+            <button class="opt-btn" onclick="handle(1)"><span>C</span> Сомневаюсь / Нет</button>
         </div>
     `;
 }
 
 function handle(v) {
-    scores[currentTest.questions[currentQ].type] += (6 - v);
+    scores[currentTest.questions[currentQ].type] += v;
     currentQ++;
     if (currentQ < currentTest.questions.length) renderQuestion();
     else showResult();
@@ -96,22 +95,23 @@ function showResult() {
     const res = resultsData[sorted[0][0]];
 
     app.innerHTML = `
-        <div id="capture-area" style="padding: 10px;">
-            <span class="mix-label">Результат анализа</span>
-            <h1 class="res-title">${res.t}</h1>
-            <div class="block"><h4>Психологический портрет</h4><p>${res.p}</p></div>
-            <div class="block"><h4>В обществе</h4><p>${res.s}</p></div>
-            <button class="reset-btn" onclick="savePhoto()">Скачать результат (PNG)</button>
-            <button class="back-link" style="display:block; margin: 15px auto; width:100%" onclick="showMenu()">Пройти другой тест</button>
+        <div id="capture-area">
+            <span class="q-top">Ваш профиль определен:</span>
+            <h1 style="font-size: 2.2rem; color: var(--accent); margin-bottom: 25px;">${res.t}</h1>
+            <div class="block"><h4>Характеристика</h4><p>${res.p}</p></div>
+            <div class="block"><h4>Взаимодействие</h4><p>${res.s}</p></div>
+            <div class="block"><h4>Реализация</h4><p>${res.c}</p></div>
         </div>
+        <button class="reset-btn" onclick="savePhoto()">Сохранить PNG</button>
+        <button class="back-link" style="display:block; margin: 15px auto; background:none; border:none; color:#fff; opacity:0.5; cursor:pointer;" onclick="showMenu()">К списку тестов</button>
     `;
 }
 
 function savePhoto() {
     const area = document.getElementById('capture-area');
-    html2canvas(area, { backgroundColor: '#192037', scale: 2 }).then(canvas => {
+    html2canvas(area, { backgroundColor: '#161d31', borderRadius: 45 }).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'result.png';
+        link.download = 'my-result.png';
         link.href = canvas.toDataURL();
         link.click();
     });
