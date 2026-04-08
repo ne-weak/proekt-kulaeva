@@ -1,85 +1,138 @@
-const questions = [
-    { q: "Вы мгновенно реагируете на происходящее, часто не успев подумать?", type: "choleric" },
-    { q: "Вам жизненно необходимо постоянно менять обстановку и круг общения?", type: "sanguine" },
-    { q: "Вас практически невозможно вывести из себя даже в острых ситуациях?", type: "phlegmatic" },
-    { q: "Вы замечаете тончайшие детали в поведении людей и остро на них реагируете?", type: "melancholic" },
-    { q: "Ваша речь быстрая, эмоциональная и сопровождается активной мимикой?", type: "choleric" },
-    { q: "Вы легко справляетесь с несколькими сложными делами одновременно?", type: "sanguine" },
-    { q: "Вы долго обдумываете свои слова и поступки, прежде чем действовать?", type: "phlegmatic" },
-    { q: "Мелкие неудачи способны надолго испортить вам настроение?", type: "melancholic" },
-    { q: "Вы склонны к риску и часто берете на себя роль лидера?", type: "choleric" },
-    { q: "Вы быстро забываете обиды и легко прощаете людей?", type: "sanguine" },
-    { q: "Вам важнее всего стабильность, предсказуемость и тишина?", type: "phlegmatic" },
-    { q: "Вы часто чувствуете острую потребность побыть в одиночестве?", type: "melancholic" },
-    { q: "Вы часто перебиваете собеседника из-за избытка эмоций или идей?", type: "choleric" },
-    { q: "Вы предпочитаете яркие впечатления глубокому анализу ситуации?", type: "sanguine" },
-    { q: "Вы можете долго заниматься рутинной работой, не теряя концентрации?", type: "phlegmatic" },
-    { q: "Вы склонны искать скрытый смысл в словах окружающих?", type: "melancholic" },
-    { q: "Ваше настроение может резко упасть без видимой на то причины?", type: "melancholic" },
-    { q: "Вы часто действуете по первому импульсу, о чем потом можете жалеть?", type: "choleric" },
-    { q: "Вы предпочитаете наблюдать за конфликтом со стороны, а не участвовать?", type: "phlegmatic" },
-    { q: "Вы легко приспосабливаетесь к любым изменениям в жизни?", type: "sanguine" }
-];
+const tests = {
+    main: {
+        title: "Тип личности",
+        questions: [
+            { q: "Вы мгновенно реагируете на происходящее, часто не успев подумать?", type: "choleric" },
+            { q: "Вам жизненно необходимо постоянно менять обстановку и круг общения?", type: "sanguine" },
+            { q: "Вас практически невозможно вывести из себя даже в острых ситуациях?", type: "phlegmatic" },
+            { q: "Вы замечаете тончайшие детали в поведении людей и остро на них реагируете?", type: "melancholic" },
+            { q: "Вы склонны к риску и часто берете на себя роль лидера?", type: "choleric" },
+            { q: "Вы быстро забываете обиды и легко прощаете людей?", type: "sanguine" },
+            { q: "Вам важнее всего стабильность, предсказуемость и тишина?", type: "phlegmatic" },
+            { q: "Мелкие неудачи способны надолго испортить вам настроение?", type: "melancholic" }
+        ]
+    },
+    social: {
+        title: "Личность в обществе",
+        questions: [
+            { q: "В новой компании вы первым идете на контакт?", type: "sanguine" },
+            { q: "Вам трудно сдерживать раздражение, если кто-то тупит?", type: "choleric" },
+            { q: "Вы предпочитаете слушать и анализировать, а не говорить?", type: "phlegmatic" },
+            { q: "Вам кажется, что окружающие часто вас недооценивают или не понимают?", type: "melancholic" }
+        ]
+    },
+    influence: {
+        title: "Влияние окружения",
+        questions: [
+            { q: "Энергичные люди вас вдохновляют, а не утомляют?", type: "sanguine" },
+            { q: "Чужое давление вызывает у вас мгновенное желание дать отпор?", type: "choleric" },
+            { q: "Вы легко сохраняете спокойствие, когда вокруг все паникуют?", type: "phlegmatic" },
+            { q: "Вы сильно зависите от эмоционального фона в коллективе?", type: "melancholic" }
+        ]
+    }
+};
 
 const resultsData = {
-    "sanguine": { t: "Сангвиник", p: "Живой, жизнерадостный человек с сильной нервной системой. Вы мгновенно адаптируетесь к новым условиям, легко переживаете неудачи и всегда смотрите на мир с оптимизмом.", s: "Вы — социальный магнит. Обладаете природным обаянием, легко заводите друзей и умеете разрядить любую обстановку шуткой.", c: "Вам подходят динамичные сферы: продажи, PR, журналистика или ивент-менеджмент. Рутина убивает ваш энтузиазм." },
-    "choleric": { t: "Холерик", p: "Страстный, порывистый и решительный человек. У вас огромный запас энергии, но вы склонны к резким сменам настроения и бурным вспышкам эмоций.", s: "Прирожденный лидер-таран. Люди идут за вашей уверенностью, но ваша прямолинейность иногда может ранить близких.", c: "Вы идеальны в управлении проектами, предпринимательстве или кризис-менеджменте. Там, где нужен драйв, вам нет равных." },
-    "phlegmatic": { t: "Флегматик", p: "Невозмутимый, спокойный и рассудительный человек. Обладаете завидным упорством, эмоциональной стабильностью и непоколебимой выдержкой.", s: "Островок безопасности. Вас ценят за надежность, честность и умение давать трезвые, взвешенные советы без лишних эмоций.", c: "Ваша стихия — системность и глубина: IT-разработка, аналитика, инженерия или администрирование." },
-    "melancholic": { t: "Меланхолик", p: "Вдумчивый, чувствительный человек с богатым внутренним миром. Вы видите и чувствуете нюансы, которые не замечают 90% окружающих.", s: "Тонкий эмпат. Вы выбираете узкий круг преданных друзей, где вас ценят за искренность, глубину чувств и верность.", c: "Вы великолепны в творчестве, науке или психологии. Там, где важны детали и глубина, вы создаете шедевры." },
-    // миксы
-    "phlegmatic-sanguine": { t: "Сангвиник-Флегматик", p: "Спокойный оптимист. Редкое и очень гармоничное сочетание: легкость и общительность сангвиника подкреплены выдержкой флегматика.", s: "Вы общительны, но рассудительны. Кажетесь мягким, но внутри у вас железный стержень и четкие принципы.", c: "Универсальный специалист: умеете и договариваться с людьми, и методично работать на результат." },
-    "choleric-sanguine": { t: "Холерик-Сангвиник", p: "Неиссякаемый источник энергии. Драйв и позитив в одном флаконе. Вы — мотор любой компании, который никогда не останавливается.", s: "Самый харизматичный тип. Ведете людей за собой играючи. Умеете вдохновлять и зажигать идеи в других.", c: "Стартапы, шоу-бизнес, политика или активные продажи. Рутина — ваш главный враг." },
-    "choleric-melancholic": { t: "Холерик-Меланхолик", p: "Сложный тип: страсть встречается с глубиной. Вы живете на пике эмоций — от безумной энергии до глубокой рефлексии.", s: "Вы можете быть резким, но ваши чувства всегда искренни. Вас сложно понять, но невозможно забыть.", c: "Режиссура, глубокое искусство, аудит или сценарное мастерство. Там, где нужна драма." },
-    "melancholic-phlegmatic": { t: "Флегматик-Меланхолик", p: "Тихий аналитик. Ваше спокойствие — результат глубокого понимания жизни. Вы видите суть вещей, не отвлекаясь на шум.", s: "Мудрый наблюдатель. К вам приходят за самым точным советом. Вас ценят за преданность и глубину.", c: "Программирование, архитектура, исследования или долгосрочное планирование." }
+    "sanguine": { t: "Сангвиник", p: "Живой, жизнерадостный человек. Вы мгновенно адаптируетесь к новому.", s: "Вы — социальный магнит и душа любой компании.", c: "PR, ивенты, продажи — ваша стихия." },
+    "choleric": { t: "Холерик", p: "Страстный и решительный. У вас огромный запас энергии и драйва.", s: "Прирожденный лидер, который ведет за собой.", c: "Управление проектами и кризис-менеджмент." },
+    "phlegmatic": { t: "Флегматик", p: "Невозмутимый и рассудительный. Обладаете завидным упорством.", s: "Островок безопасности для друзей и коллег.", c: "IT, аналитика и глубокие исследования." },
+    "melancholic": { t: "Меланхолик", p: "Вдумчивый и чувствительный. Видите то, что другие упускают.", s: "Тонкий эмпат. Выбираете качество общения, а не количество.", c: "Творчество, психология и наука." }
 };
 
-let current = 0;
+let currentTest = null;
+let currentQ = 0;
 let scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
 
-function render() {
-    const app = document.getElementById('app');
-    
-    if (current < questions.length) {
-        // квешнс
-        app.innerHTML = `
-            <span class="q-top">Вопрос ${current + 1} из ${questions.length}</span>
-            <h2>${questions[current].q}</h2>
-            <div class="options">
-                <button class="opt-btn" onclick="next(1)"><span>1</span> Да, точно</button>
-                <button class="opt-btn" onclick="next(2)"><span>2</span> Похоже на меня</button>
-                <button class="opt-btn" onclick="next(3)"><span>3</span> Сомневаюсь</button>
-                <button class="opt-btn" onclick="next(4)"><span>4</span> Не совсем</button>
-                <button class="opt-btn" onclick="next(5)"><span>5</span> Точно нет</button>
-            </div>
-        `;
-    } else {
-        // результат
-        const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-        const f = sorted[0][0]; const s = sorted[1][0];
-        // если разница < 8 баллов - выдаем микс
-        const isMix = (sorted[0][1] - sorted[1][1] < 8);
-        let key = isMix ? [f, s].sort().join('-') : f;
-        const res = resultsData[key] || resultsData[f];
+const app = document.getElementById('app');
 
-        app.innerHTML = `
-            ${isMix ? '<span class="mix-label">ВАШ МИКС:</span>' : ''}
-            <h1 class="res-title">${res.t}</h1>
-            <div class="scroll-area">
-                <div class="block"><h4>Психологический портрет</h4><p>${res.p}</p></div>
-                <div class="block"><h4>В обществе</h4><p>${res.s}</p></div>
-                <div class="block"><h4>Карьера и цели</h4><p>${res.c}</p></div>
+function showHome() {
+    app.innerHTML = `
+        <div class="fade-in">
+            <span class="q-top">Проект самопознания</span>
+            <h1 class="res-title" style="text-align:left; font-size: 2.5rem;">Добро пожаловать</h1>
+            <p style="line-height:1.6; margin-bottom: 25px; opacity:0.8">
+                Исследуйте глубины своего темперамента. Пройдите наши тесты, чтобы понять, как вы взаимодействуете с миром и людьми.
+            </p>
+            <div class="block" style="border-left: 3px solid var(--accent); background: rgba(255,255,255,0.02)">
+                <p style="font-size: 0.9rem">Выберите один из трех специализированных тестов и получите детальный разбор личности.</p>
             </div>
-            <button class="reset-btn" onclick="location.reload()">Пройти заново</button>
-        `;
-    }
+            <button class="reset-btn" style="margin-top:20px" onclick="showMenu()">Перейти к опросам</button>
+        </div>
+    `;
 }
 
-// привязываем функцию к окну чтоб кнопки ее не проебали
+function showMenu() {
+    app.innerHTML = `
+        <span class="q-top">Доступные тесты</span>
+        <h2>Что выберем сегодня?</h2>
+        <div class="options">
+            <button class="opt-btn" onclick="startTest('main')"><span>1</span> Какой мой тип личности?</button>
+            <button class="opt-btn" onclick="startTest('social')"><span>2</span> Я в обществе</button>
+            <button class="opt-btn" onclick="startTest('influence')"><span>3</span> Влияние других типов</button>
+        </div>
+        <button class="back-link" onclick="showHome()">← Назад</button>
+    `;
+}
+
+function startTest(key) {
+    currentTest = tests[key];
+    currentQ = 0;
+    scores = { sanguine: 0, choleric: 0, phlegmatic: 0, melancholic: 0 };
+    renderQuestion();
+}
+
+function renderQuestion() {
+    const q = currentTest.questions[currentQ];
+    app.innerHTML = `
+        <span class="q-top">${currentTest.title}: ${currentQ + 1} / ${currentTest.questions.length}</span>
+        <h2>${q.q}</h2>
+        <div class="options">
+            <button class="opt-btn" onclick="next(1)"><span>1</span> Точно да</button>
+            <button class="opt-btn" onclick="next(2)"><span>2</span> Похоже на меня</button>
+            <button class="opt-btn" onclick="next(4)"><span>3</span> Вряд ли</button>
+            <button class="opt-btn" onclick="next(5)"><span>4</span> Точно нет</button>
+        </div>
+    `;
+}
+
 window.next = (v) => {
-    scores[questions[current].type] += (6 - v);
-    current++;
-    render();
+    scores[currentTest.questions[currentQ].type] += (6 - v);
+    currentQ++;
+    if (currentQ < currentTest.questions.length) renderQuestion();
+    else showResult();
 };
 
-// СТАРТ
-document.addEventListener('DOMContentLoaded', render);
+function showResult() {
+    const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    const res = resultsData[sorted[0][0]];
+
+    app.innerHTML = `
+        <div id="capture-area">
+            <span class="mix-label">Ваш результат:</span>
+            <h1 class="res-title">${res.t}</h1>
+            <div class="scroll-area">
+                <div class="block"><h4>Портрет</h4><p>${res.p}</p></div>
+                <div class="block"><h4>В обществе</h4><p>${res.s}</p></div>
+                <div class="block"><h4>Карьера</h4><p>${res.c}</p></div>
+            </div>
+        </div>
+        <button class="reset-btn" onclick="savePhoto()">Сохранить результат (PNG)</button>
+        <button class="back-link" style="display:block; margin: 15px auto;" onclick="showMenu()">К тестам</button>
+    `;
+}
+
+function savePhoto() {
+    const area = document.getElementById('capture-area');
+    html2canvas(area, {
+        backgroundColor: '#192037',
+        borderRadius: 30,
+        scale: 2
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'my_type.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', showHome);
