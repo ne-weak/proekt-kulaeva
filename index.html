@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Deep Temperament Test</title>
+    <title>PersonaScope — Портал самопознания</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -11,10 +11,63 @@
 <body>
     <div class="bg-visual"><div class="circle"></div><div class="circle"></div></div>
 
-    <div class="container">
-        <div id="app" class="glass-card">
+    <header class="main-header">
+        <div class="logo">Persona<span>Scope</span></div>
+        <nav>
+            <a href="#about">О проекте</a>
+            <a href="#experts">Эксперты</a>
+            <button class="nav-btn" onclick="scrollToApp()">Начать тест</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Добро пожаловать в мир твоего «Я»</h1>
+                <p>Темперамент — это фундамент вашей личности. Понимание своих биологических настроек помогает эффективнее строить карьеру, избегать выгорания и находить общий язык с близкими.</p>
+                <div class="hero-btns">
+                    <button class="primary-btn" onclick="scrollToApp()">Узнать свой тип</button>
+                    <a href="#about" class="secondary-link">Узнать больше ↓</a>
+                </div>
             </div>
-    </div>
+        </section>
+
+        <section class="info-section" id="about">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Почему это важно?</h3>
+                    <p>90% конфликтов происходят из-за разницы темпераментов. Узнав свой тип, вы перестанете винить себя за медлительность или вспыльчивость.</p>
+                </div>
+                <div class="info-card">
+                    <h3>3 уровня анализа</h3>
+                    <p>Мы подготовили глубокое исследование: от базовых реакций до поведения в стрессовых ситуациях и влияния на вас окружающих.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="experts" id="experts">
+            <h2 class="section-title">Ведущие эксперты</h2>
+            <div class="expert-list">
+                <div class="expert-item">
+                    <div class="expert-photo" style="background-image: url('https://img.freepik.com/free-photo/handsome-young-businessman-suit_273609-6513.jpg')"></div>
+                    <h4>Лев Выготский</h4>
+                    <p>Основатель культурно-исторической теории. Его труды легли в основу понимания развития личности.</p>
+                </div>
+                <div class="expert-item">
+                    <div class="expert-photo" style="background-image: url('https://img.freepik.com/free-photo/portrait-of-confident-mature-businessman_23-2148911835.jpg')"></div>
+                    <h4>Алексей Леонтьев</h4>
+                    <p>Создатель теории деятельности. Изучал, как наши поступки формируют сознание.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="app-section" id="test-app">
+            <div class="container">
+                <div id="app" class="glass-card">
+                    </div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
